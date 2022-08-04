@@ -31,4 +31,9 @@ RUN sudo apt update && sudo apt-get install -y build-essential \
     libmpfr-dev
 
 RUN git clone https://github.com/elm/compiler.git
-RUN cd compiler && git checkout 0.19.1 && rm worker/elm.cabal && cabal new-update && cabal new-configure && cabal new-build
+RUN cd compiler && git checkout 0.19.1 && rm worker/elm.cabal \
+    && cabal new-update \ 
+    && cabal new-configure \
+    && cabal new-build \
+    && sudo cp dist-newstyle/build/aarch64-linux/ghc-*/elm-0.19.1/x/elm/build/elm/elm /usr/local/bin
+    
